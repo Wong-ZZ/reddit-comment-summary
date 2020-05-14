@@ -26,8 +26,8 @@
     "build": "react-scripts build",
     "build-css": "node-sass-chokidar src/ -o src/",
     "eject": "react-scripts eject",
-    "lint": "eslint src/*.tsx --fix --fix-type [problem,suggestion,layout]",
-    "start": "react-scripts start watch-css",
+    "lint": "eslint src/*.tsx --fix",
+    "start": "react-scripts start -p watch-css",
     "test": "react-scripts test",
     "watch-css": "node-sass-chokidar src/ -o src/ --watch --recursive"
   },

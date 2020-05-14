@@ -1,10 +1,10 @@
 import React from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 
-const NavigationBar: React.FC = () => {
+const NavigationBar: React.FC<{}> = () => {
   return (
     <Navbar bg="info" expand="lg">
-      <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+      <Navbar.Brand href="#home">Reddit Comment Summary</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
