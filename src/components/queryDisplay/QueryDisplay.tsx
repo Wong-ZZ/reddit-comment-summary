@@ -7,6 +7,7 @@ interface QueryDisplayProps {
   toDisplay: SubmissionInfo | null;
   backToSearch: () => void;
   getDHMS: (date: number) => string;
+  getPastQuery: (id: number) => void;
 }
 
 class QueryDisplay extends React.Component<QueryDisplayProps, {}> {
@@ -44,58 +45,6 @@ class QueryDisplay extends React.Component<QueryDisplayProps, {}> {
               <p>{`Submitted by /u/${poster} on /r/${subreddit}`}</p>
               <p>{`${commentCount} comments`}</p>
               <h6>Wordcloud</h6>
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-              <p />
-
               <Image
                 className="my-1 col-6 mx-auto"
                 src={this.props.toDisplay.wordcloud_url}
@@ -108,7 +57,7 @@ class QueryDisplay extends React.Component<QueryDisplayProps, {}> {
           </Container>
         </Col>
         <Col className="col-3 past-display mt-3 ml-3 mr-0 px-0">
-          <PastQueriesTable currentDisplay={this.props.toDisplay.id} pastQueries={this.props.toDisplay.past_queries} getDHMS={this.props.getDHMS}/>
+          <PastQueriesTable currentDisplay={this.props.toDisplay.id} pastQueries={this.props.toDisplay.past_queries} getDHMS={this.props.getDHMS} getPastQuery={this.props.getPastQuery}/>
         </Col>
         
       </Row>

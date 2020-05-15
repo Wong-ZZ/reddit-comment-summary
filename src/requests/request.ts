@@ -15,14 +15,14 @@ export async function getPastQueries(submissionID: string): Promise<SubmissionIn
   return submissionsInfo;
 }
 
-// export async function getIndividualQuery(queryID: number): Promise<any | null> {
-//   const resp = await makeRequest(`query/${queryID}/`, {method: "GET"});
-//   if (!resp || !resp.ok) {
-//     return null;
-//   }
-//   const queryInfo = await resp.json();
-//   return queryInfo;
-// }
+export async function getPastQuery(queryID: number): Promise<SubmissionInfo | null> {
+  const resp = await makeRequest(`submission/${queryID}/`, {method: "GET"});
+  if (!resp || !resp.ok) {
+    return null;
+  }
+  const queryInfo = await resp.json();
+  return queryInfo;
+}
 
 export async function postQuery(submissionID: string): Promise<SubmissionInfo | null> {
   const resp = await makeRequest(`submissions/${submissionID}/`, {method: "POST"});

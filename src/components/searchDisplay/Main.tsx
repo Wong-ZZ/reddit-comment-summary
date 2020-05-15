@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Form, InputGroup } from 'react-bootstrap';
 import Display from './Display';
 import QueryDisplay from '../queryDisplay/QueryDisplay';
-import { getPastQueries, postQuery } from '../../requests/request';
+import { getPastQueries, getPastQuery, postQuery } from '../../requests/request';
 
 export interface SubmissionInfo {
   id: number;
@@ -73,10 +73,20 @@ class Main extends React.Component<{}, MainState> {
             toDisplay={this.state.queryToDisplay}
             backToSearch={this.backToSearch}
             getDHMS={this.getDHMS}
+            getPastQuery={this.getPastQuery}
           />
         )}
       </div>
     );
+  }
+
+  private getPastQuery: (id: number) => void = (id) => {
+    getPastQuery(id).then(q => {
+      if (!q) {
+        return;
+      }
+      this.setState({ queryToDisplay: q });
+    });
   }
 
   private handleClick: () => void = () => {
