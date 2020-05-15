@@ -37,3 +37,18 @@ body {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace; }
+
+.QueryDisplay .back-btn {
+  width: 3%;
+  max-width: 3%; }
+
+.QueryDisplay .main-display {
+  width: 80%;
+  max-width: 80%; }
+
+.QueryDisplay .past-display {
+  width: 25%;
+  max-width: 25%; }
+
+.QueryDisplay .sticky-top {
+  top: 20px; }

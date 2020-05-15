@@ -1,10 +1,12 @@
 import React from 'react';
-import { PostInfo } from './Main';
+import { SubmissionInfo } from './Main';
 import IndividualCard from './IndividualCard';
 import { Card, CardDeck } from 'react-bootstrap';
 
 interface DisplayProps {
-  queries: PostInfo[];
+  queries: SubmissionInfo[];
+  handleDisplayQuery: (s: SubmissionInfo) => void;
+  getDHMS: (date: number) => string;
 }
 
 class Display extends React.Component<DisplayProps, {}> {
@@ -13,13 +15,25 @@ class Display extends React.Component<DisplayProps, {}> {
   }
 
   public render(): JSX.Element {
-    return <CardRows queries={this.props.queries} />;
+    return (
+      <CardRows
+        queries={this.props.queries}
+        handleDisplayQuery={this.props.handleDisplayQuery}
+        getDHMS={this.props.getDHMS}
+      />
+    );
   }
 }
 
-const CardRows: React.FC<DisplayProps> = (props) => {
-  const allCards = props.queries.map((query, index) => (
-    <IndividualCard query={query} index={index.toString()} key={index} />
+const CardRows: React.FC<DisplayProps> = (props: DisplayProps) => {
+  const allCards = props.queries.reverse().map((query, index) => (
+    <IndividualCard
+      handleDisplayQuery={props.handleDisplayQuery}
+      query={query}
+      index={index.toString()}
+      key={index}
+      getDHMS={props.getDHMS}
+    />
   ));
   const rowSize = 4;
   const allRows: JSX.Element[][] = [];

@@ -1,6 +1,6 @@
 import React from 'react';
-import Main from './Main';
 import NavigationBar from './NavigationBar';
+import Main from './searchDisplay/Main';
 
 const App: React.FC = () => {
   return (

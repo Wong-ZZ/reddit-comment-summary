@@ -1,27 +1,36 @@
-import { PostInfo } from '../Main';
+import { SubmissionInfo } from '../components/searchDisplay/Main';
 
-const BACKEND_URL = "http://localhost:4001/";
+const BACKEND_URL = "http://localhost:8000/";
 
 type FetchOptions = {
   method: string
 };
 
-export async function getPastQueries(submissionID: string): Promise<PostInfo[]> {
+export async function getPastQueries(submissionID: string): Promise<SubmissionInfo[]> {
   const resp = await makeRequest(`submissions/${submissionID}/`, {method: "GET"});
   if (!resp || !resp.ok) {
     return [];
   }
-  const postsInfo: PostInfo[] = await resp.json();
-  return postsInfo;
+  const submissionsInfo: SubmissionInfo[] = await resp.json();
+  return submissionsInfo;
 }
 
-export async function postQuery(submissionID: string): Promise<PostInfo | null> {
+// export async function getIndividualQuery(queryID: number): Promise<any | null> {
+//   const resp = await makeRequest(`query/${queryID}/`, {method: "GET"});
+//   if (!resp || !resp.ok) {
+//     return null;
+//   }
+//   const queryInfo = await resp.json();
+//   return queryInfo;
+// }
+
+export async function postQuery(submissionID: string): Promise<SubmissionInfo | null> {
   const resp = await makeRequest(`submissions/${submissionID}/`, {method: "POST"});
   if (!resp || !resp.ok) {
     return null;
   }
-  const postInfo = await resp.json();
-  return postInfo;
+  const submissionInfo = await resp.json();
+  return submissionInfo;
 }
 
 async function makeRequest(fetchPath: string, options: FetchOptions) {
