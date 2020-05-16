@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Card, Col, Container, Image, Row } from 'react-bootstrap';
+import CommenterCounter from './CommenterCounter';
 import PastQueriesTable from './PastQueriesTable';
 import { SubmissionInfo } from '../searchDisplay/Main';
 
@@ -46,10 +47,11 @@ class QueryDisplay extends React.Component<QueryDisplayProps, {}> {
               <p>{`${commentCount} comments`}</p>
               <h6>Wordcloud</h6>
               <Image
-                className="my-1 col-6 mx-auto"
+                className="my-1 col-8 mx-auto"
                 src={this.props.toDisplay.wordcloud_url}
                 fluid={true}
               />
+              <CommenterCounter commenterCount={this.props.toDisplay.commenter_count}/>
               <Card.Footer>
                 <p>{`Queried ${dhms} on ${date.toString()}`}</p>
               </Card.Footer>

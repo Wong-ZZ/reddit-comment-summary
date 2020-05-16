@@ -6,6 +6,7 @@ import { getPastQueries, getPastQuery, postQuery } from '../../requests/request'
 
 export interface SubmissionInfo {
   id: number;
+  commenter_count: object;
   num_comments: number;
   poster: string;
   queried_at: string;
@@ -56,6 +57,7 @@ class Main extends React.Component<{}, MainState> {
                 onKeyDown={this.handleEnter}
                 placeholder="Enter a submission ID"
                 onChange={this.handleChange}
+                value={this.state.submissionID}
               />
             </InputGroup>
             <Button variant="primary" onClick={this.handleClick} disabled={this.state.isLoading}>
@@ -98,10 +100,13 @@ class Main extends React.Component<{}, MainState> {
     postQuery(submissionID)
       .then((query) => {
         if (!query) {
-          this.setState({ isLoading: false })
+          this.setState({ isLoading: false });
           return;
         }
         this.setState({ queryToDisplay: query, showIndividualQuery: true, isLoading: false });
+      })
+      .catch(() => {
+        this.setState({ isLoading: false });
       });
   };
 
