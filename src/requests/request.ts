@@ -1,6 +1,5 @@
 import { SubmissionInfo } from '../components/searchDisplay/Main';
-
-const BACKEND_URL = "http://localhost:8000/";
+import { BACKEND_URL } from '../constants';
 
 type FetchOptions = {
   method: string
