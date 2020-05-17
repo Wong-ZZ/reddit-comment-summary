@@ -11,7 +11,7 @@ export async function getPastQueries(submissionID: string): Promise<SubmissionIn
     return [];
   }
   const submissionsInfo: SubmissionInfo[] = await resp.json();
-  return submissionsInfo;
+  return submissionsInfo.reverse();
 }
 
 export async function getPastQuery(queryID: number): Promise<SubmissionInfo | null> {

@@ -26,7 +26,7 @@ class Display extends React.Component<DisplayProps, {}> {
 }
 
 const CardRows: React.FC<DisplayProps> = (props: DisplayProps) => {
-  const allCards = props.queries.reverse().map((query, index) => (
+  const allCards = props.queries.map((query, index) => (
     <IndividualCard
       handleDisplayQuery={props.handleDisplayQuery}
       query={query}

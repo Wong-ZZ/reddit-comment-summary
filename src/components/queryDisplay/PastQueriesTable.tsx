@@ -26,7 +26,7 @@ class PastQueriesTable extends React.Component<PastQueriesTableProps,{}> {
   }
 
   private listRows: () => JSX.Element[] = () => {
-    return this.props.pastQueries.reverse().map((q, index) => {
+    return this.props.pastQueries.map((q, index) => {
       let hightlight = false;
       const bgColor = index % 2 === 0 ? "light" : "secondary";
       const date = Date.parse(q.queried_at);
